@@ -2,7 +2,10 @@
 // Works by selecting a pivot element and finding the index where the pivot
 // should end up in the sorted Array. Elements lower that the pivot are placed in the screen Left
 // elements higher than the pivot are placed in the right. the pivot is positioned/sorted and the 
-//process is repeated. 
+//process is repeated.
+
+//complexity -- same as merge, O(logn)
+
 
 const quickSort = (arr, start=0, end=arr.length+1)=>{
     const swap = (array, i, j) => {

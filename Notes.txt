@@ -1,0 +1,2 @@
+O(n pow(2))-- Bubble, insetion, selection sorts
+O(nlogn) -- quick and merge sorts
