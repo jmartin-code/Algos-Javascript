@@ -2,10 +2,13 @@
 //Special sorting algo that works on list of numbers
 //this sort doesnt compare the numbers.
 //radix sort is fast.
+//time complexity is O(nk). If k is large, complexity is O(nlogn)
+
+
 
 //method to get digits from whole number
 const getDigit = (num, place) =>{
-    console.log( Math.floor(Math.abs(num) / Math.pow(10, place)) % 10);
+    return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
 }
 
 // count the number of digits in a number
@@ -23,4 +26,21 @@ const mostDigits = (nums) => {
     return maxDigits
 }
 
-getDigit(12345, 5)
+function radixSort(nums){
+    let maxDigitCount = mostDigits(nums);
+    for(let k = 0; k < maxDigitCount; k++){
+     //create 10 empty arrays
+        let digitBuckets = Array.from({length : 10}, () => []);
+        for(let i = 0; i < nums.length; i++){
+            let digit = getDigit(nums[i],k);
+            digitBuckets[digit].push(nums[i]);
+        }
+        console.log(digitBuckets);
+        //concat the digitnbuckets
+        nums = [].concat(...digitBuckets);
+        console.log(nums);
+
+    }
+}
+
+radixSort([23, 345, 5467, 12, 2345,9852])
