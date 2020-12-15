@@ -32,9 +32,40 @@ class singlyLinkedList {
         this.length++;
         console.log(this);
     }
+    
+    //pop from the tail and reset new tail
+    pop(){
+        if(!this.head) return undefined;
+        //set current and newTail variables to start at the beginning of the linked list
+        let current = this.head;
+        let newTail = current;
+        
+        while(current.next){
+            newTail = current;
+            current = current.next;
+        }
+        //at the end of the loop, this.tail should be set to newTail
+        this.tail = newTail;
+        //set the this.tail.next to null;
+        this.tail.next = null;
+        //decrement the length
+        this.length--;
+        //check if length is zero and reset head and tail to null
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
+        //return current
+        console.log(current);
+    }
+
 }
 
 let list = new singlyLinkedList();
 //push will enter at the end
 list.push("Hola");
 list.push("dimelo");
+list.pop();
+list.pop();
+list.pop();
+console.log(list);
