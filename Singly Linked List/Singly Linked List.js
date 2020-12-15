@@ -59,13 +59,28 @@ class singlyLinkedList {
         console.log(current);
     }
 
+    shifting(){
+        //if the there is no head return undefined
+        if(!this.head) return undefined;
+        //set current head to a variable
+        let current = this.head;
+        // set head to next 
+        this.head = current.next;
+        //decrease the length
+        this.length--;
+        if(this.length === 0){
+            this.tail = null;
+        }
+        console.log(current);
+    }
+
 }
 
 let list = new singlyLinkedList();
 //push will enter at the end
 list.push("Hola");
 list.push("dimelo");
-list.pop();
-list.pop();
-list.pop();
+// list.pop();
+// list.pop();
+list.shifting();
 console.log(list);
