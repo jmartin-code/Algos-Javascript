@@ -74,6 +74,23 @@ class singlyLinkedList {
         console.log(current);
     }
 
+    unshifting(value){
+        //create a new node
+        let newNode = new Node(value);
+
+        if(!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else{
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        
+        this.length++;
+        console.log(this)
+        
+    }
+
 }
 
 let list = new singlyLinkedList();
@@ -83,4 +100,5 @@ list.push("dimelo");
 // list.pop();
 // list.pop();
 list.shifting();
+list.unshifting("papalote");
 console.log(list);
