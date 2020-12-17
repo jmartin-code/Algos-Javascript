@@ -58,7 +58,7 @@ class singlyLinkedList {
         //return current
         console.log(current);
     }
-
+    //Method to remove value from the beginning of the liked list.
     shifting(){
         //if the there is no head return undefined
         if(!this.head) return undefined;
@@ -73,7 +73,7 @@ class singlyLinkedList {
         }
         console.log(current);
     }
-
+    //Method to add to the beginning of the linked list.
     unshifting(value){
         //create a new node
         let newNode = new Node(value);
@@ -91,14 +91,47 @@ class singlyLinkedList {
         
     }
 
+    //implement the get method
+    get(index){
+        //return null if index parameter is out of bound
+        if(index < 0 || index >= this.length) {
+            console.log("wrong index")
+            return null;
+        } 
+
+        let counter = 0;
+        let current = this.head;
+
+        while(counter !== index){
+            counter ++;
+            current = current.next;
+        }
+        console.log(current);
+        return current;
+    }
+
+    //implement set method
+    set(index, value){
+        let foundNode = this.get(index);
+        if(foundNode){
+            foundNode.value = value;
+            return true;
+        }
+        return false;
+    }
+
 }
 
 let list = new singlyLinkedList();
 //push will enter at the end
 list.push("Hola");
 list.push("dimelo");
+list.push("muy");
+list.push("vacano");
+// list.get(0);
 // list.pop();
 // list.pop();
-list.shifting();
-list.unshifting("papalote");
+// list.shifting();
+// list.unshifting("papalote");
+list.set(0,"papapa")
 console.log(list);
