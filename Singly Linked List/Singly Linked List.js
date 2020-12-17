@@ -110,7 +110,7 @@ class singlyLinkedList {
         return current;
     }
 
-    //implement set method
+    //implement set method to set/change value at an index point
     set(index, value){
         let foundNode = this.get(index);
         if(foundNode){
@@ -120,18 +120,85 @@ class singlyLinkedList {
         return false;
     }
 
+    //Implement insert method to insert a value at a particular index
+    insert(index, value){
+        //check if index is out of bound
+        if(index <0 || index > this.length){
+            console.log("wrong index");
+            return false;
+            //If index equals the lenght, add the value to the end.
+        } else if( index === this.length){
+            return !!this.push(value);
+            //if index equals zero, add the value to the beginning. 
+        }else if(index === 0){
+            return !!this.unshifting(value);
+        }
+
+        let newNode = new Node(value);
+        let prev = this.get(index-1);
+        let temp = prev.next;
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;
+        return true;
+    }
+
+    remove(index){
+        if(index < 0 || index >= this.length){
+            return undefined;
+        }
+        if(index === 0){
+            return this.shifting();
+        }
+        if(index === this.length - 1){
+            return this.pop();
+        }
+
+        let prev = this.get(index - 1);
+        let removed = prev.next;
+        prev.next = removed.next;
+        this.length--;
+        return removed;
+    }
+
+    //reverse in singly linked list is a common interview question.
+    reverse(){
+        //swap head and tail
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+
+        //reverse the other items
+        let next;
+        let prev = null;
+        for(let i = 0; i < this.length; i++){
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        console.log(this);
+        return this;
+    }
 }
 
 let list = new singlyLinkedList();
 //push will enter at the end
-list.push("Hola");
-list.push("dimelo");
-list.push("muy");
-list.push("vacano");
+// list.push("Hola");
+// list.push("dimelo");
+// list.push("muy");
+// list.push("vacano");
 // list.get(0);
 // list.pop();
 // list.pop();
 // list.shifting();
 // list.unshifting("papalote");
-list.set(0,"papapa")
-console.log(list);
+
+list.push(50);
+list.push(100);
+list.push(150);
+list.push(200);
+// list.insert(0, 25);
+// list.remove(1)
+list.reverse();
+// console.log(list);
