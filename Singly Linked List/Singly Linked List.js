@@ -3,6 +3,9 @@
 //Linked list consist of nodes and each node has a value and a pointer
 //to another node or null. There is no index, there is only head and tail.
 //random access is not allow.
+//most of the methods for singly linked list are O(n).
+//singly linked list is an alternative to arrays when insertion and deletion 
+//at the beginning are required.
 
 class Node {
     constructor(value){
